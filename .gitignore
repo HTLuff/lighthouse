@@ -1,0 +1,13 @@
+# Design
+*.sketch
+# Client
+client/src/secrets.json
+client/node_modules
+client/.svelte-kit
+client/static
+client/build
+# Server
+server/node_modules
+server/secrets.yml
+server/layers/ffmpeg/layer/**
+server/layers/ffmpeg/.serverless
