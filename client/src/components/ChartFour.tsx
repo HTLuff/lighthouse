@@ -1,6 +1,6 @@
-import { ApexOptions } from 'apexcharts';
-import React, { useState } from 'react';
-import ReactApexChart from 'react-apexcharts';
+import { ApexOptions } from "apexcharts";
+import React, { useState } from "react";
+import ReactApexChart from "react-apexcharts";
 
 interface ChartFourState {
   series: { data: number[] }[];
@@ -20,10 +20,10 @@ const ChartFour: React.FC = () => {
   });
 
   const options: ApexOptions = {
-    colors: ['#3C50E0'],
+    colors: ["#3C50E0"],
     chart: {
-      fontFamily: 'Satoshi, sans-serif',
-      type: 'bar',
+      fontFamily: "Satoshi, sans-serif",
+      type: "bar",
       height: 350,
       toolbar: {
         show: false,
@@ -32,7 +32,7 @@ const ChartFour: React.FC = () => {
     plotOptions: {
       bar: {
         horizontal: false,
-        columnWidth: '55%',
+        columnWidth: "55%",
         // endingShape: "rounded",
         borderRadius: 2,
       },
@@ -43,40 +43,40 @@ const ChartFour: React.FC = () => {
     stroke: {
       show: true,
       width: 4,
-      colors: ['transparent'],
+      colors: ["transparent"],
     },
     xaxis: {
       categories: [
-        '1',
-        '2',
-        '3',
-        '4',
-        '5',
-        '6',
-        '7',
-        '8',
-        '9',
-        '10',
-        '11',
-        '12',
-        '13',
-        '14',
-        '15',
-        '16',
-        '17',
-        '18',
-        '19',
-        '20',
-        '21',
-        '22',
-        '23',
-        '24',
-        '25',
-        '26',
-        '27',
-        '28',
-        '29',
-        '30',
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20",
+        "21",
+        "22",
+        "23",
+        "24",
+        "25",
+        "26",
+        "27",
+        "28",
+        "29",
+        "30",
       ],
       axisBorder: {
         show: false,
@@ -87,9 +87,9 @@ const ChartFour: React.FC = () => {
     },
     legend: {
       show: true,
-      position: 'top',
-      horizontalAlign: 'left',
-      fontFamily: 'inter',
+      position: "top",
+      horizontalAlign: "left",
+      fontFamily: "inter",
 
       markers: {
         radius: 99,
@@ -125,7 +125,7 @@ const ChartFour: React.FC = () => {
     <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5">
       <div>
         <h3 className="text-xl font-semibold text-black dark:text-white">
-          Visitors Analytics
+          Visitors Last 30 Days
         </h3>
       </div>
 

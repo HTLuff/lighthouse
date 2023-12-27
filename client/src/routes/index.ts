@@ -1,61 +1,67 @@
-import { lazy } from 'react';
+import { lazy } from "react";
 
-const Calendar = lazy(() => import('../pages/Calendar'));
-const Chart = lazy(() => import('../pages/Chart'));
-const FormElements = lazy(() => import('../pages/Form/FormElements'));
-const FormLayout = lazy(() => import('../pages/Form/FormLayout'));
-const Profile = lazy(() => import('../pages/Profile'));
-const Settings = lazy(() => import('../pages/Settings'));
-const Tables = lazy(() => import('../pages/Tables'));
-const Alerts = lazy(() => import('../pages/UiElements/Alerts'));
-const Buttons = lazy(() => import('../pages/UiElements/Buttons'));
+// const Calendar = lazy(() => import("../pages/Calendar"));
+const Dashboard = lazy(() => import("../pages/Dashboard"));
+// const Chart = lazy(() => import("../pages/Metrics/Views"));
+const Views = lazy(() => import("../pages/Metrics/Views"));
+const Clicks = lazy(() => import("../pages/Metrics/Clicks"));
+const Geo = lazy(() => import("../pages/Metrics/Geo"));
+const Profile = lazy(() => import("../pages/Profile"));
+const Settings = lazy(() => import("../pages/Settings"));
+// const Alerts = lazy(() => import("../pages/UiElements/Alerts"));
+// const Buttons = lazy(() => import("../pages/UiElements/Buttons"));
 
 const coreRoutes = [
+  // {
+  //   path: "/calendar",
+  //   title: "Calender",
+  //   component: Calendar,
+  // },
   {
-    path: '/calendar',
-    title: 'Calender',
-    component: Calendar,
+    path: "/dashboard",
+    title: "Dashboard",
+    component: Dashboard,
   },
   {
-    path: '/profile',
-    title: 'Profile',
+    path: "/profile",
+    title: "Profile",
     component: Profile,
   },
   {
-    path: '/forms/form-elements',
-    title: 'Forms Elements',
-    component: FormElements,
+    path: "/metrics/views",
+    title: "Views",
+    component: Views,
   },
   {
-    path: '/forms/form-layout',
-    title: 'Form Layouts',
-    component: FormLayout,
+    path: "/metrics/clicks",
+    title: "Clicks",
+    component: Clicks,
   },
   {
-    path: '/tables',
-    title: 'Tables',
-    component: Tables,
+    path: "/metrics/geo",
+    title: "Geo",
+    component: Geo,
   },
   {
-    path: '/settings',
-    title: 'Settings',
+    path: "/settings",
+    title: "Settings",
     component: Settings,
   },
-  {
-    path: '/chart',
-    title: 'Chart',
-    component: Chart,
-  },
-  {
-    path: '/ui/alerts',
-    title: 'Alerts',
-    component: Alerts,
-  },
-  {
-    path: '/ui/buttons',
-    title: 'Buttons',
-    component: Buttons,
-  },
+  // {
+  //   path: "/chart",
+  //   title: "Chart",
+  //   component: Chart,
+  // },
+  // {
+  //   path: "/ui/alerts",
+  //   title: "Alerts",
+  //   component: Alerts,
+  // },
+  // {
+  //   path: "/ui/buttons",
+  //   title: "Buttons",
+  //   component: Buttons,
+  // },
 ];
 
 const routes = [...coreRoutes];
