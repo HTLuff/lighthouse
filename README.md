@@ -97,8 +97,6 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
+- [ ] Add Changelog
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

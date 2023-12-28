@@ -94,8 +94,8 @@ const Settings = () => {
                           type="text"
                           name="fullName"
                           id="fullName"
-                          placeholder="Lighthouse Admin"
-                          defaultValue="Lighthouse Admin"
+                          placeholder="Demo User"
+                          defaultValue="Demo User"
                         />
                       </div>
                     </div>
@@ -156,8 +156,8 @@ const Settings = () => {
                         type="email"
                         name="emailAddress"
                         id="emailAddress"
-                        placeholder="hello@demo.lighthouse.com"
-                        defaultValue="hello@demo.lighthouse.com"
+                        placeholder="demouser@demo.lighthouse.com"
+                        defaultValue="demouser@demo.lighthouse.com"
                       />
                     </div>
                   </div>
@@ -174,8 +174,8 @@ const Settings = () => {
                       type="text"
                       name="Username"
                       id="Username"
-                      placeholder="admin123"
-                      defaultValue="admin123"
+                      placeholder="demo123"
+                      defaultValue="demo123"
                     />
                   </div>
 

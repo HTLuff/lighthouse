@@ -6,6 +6,9 @@ import SignIn from "./pages/Authentication/SignIn";
 import SignUp from "./pages/Authentication/SignUp";
 import Loader from "./common/Loader";
 import routes from "./routes";
+import PrivateRoute from "./routes/Private";
+import AuthProvider from "./hooks/AuthProvider";
+import Lander from "./pages/Lander";
 
 const DefaultLayout = lazy(() => import("./layout/DefaultLayout"));
 
@@ -25,28 +28,30 @@ function App() {
         reverseOrder={false}
         containerClassName="overflow-auto"
       />
-      <Routes>
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route element={<DefaultLayout />}>
-          {/* Replace with authenticator */}
-          {/* <Route index element={<Dashboard />} /> */}
-          {routes.map((routes, index) => {
-            const { path, component: Component } = routes;
-            return (
-              <Route
-                key={index}
-                path={path}
-                element={
-                  <Suspense fallback={<Loader />}>
-                    <Component />
-                  </Suspense>
-                }
-              />
-            );
-          })}
-        </Route>
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route index element={<Lander />} />
+          <Route element={<DefaultLayout />}>
+            {routes.map((routes, index) => {
+              const { path, component: Component } = routes;
+              return (
+                <Route key={index} element={<PrivateRoute />}>
+                  <Route
+                    path={path}
+                    element={
+                      <Suspense fallback={<Loader />}>
+                        <Component />
+                      </Suspense>
+                    }
+                  />
+                </Route>
+              );
+            })}
+          </Route>
+        </Routes>
+      </AuthProvider>
     </>
   );
 }

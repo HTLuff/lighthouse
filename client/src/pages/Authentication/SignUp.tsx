@@ -1,21 +1,33 @@
-import { Link } from 'react-router-dom';
-import LogoDark from '../../images/logo/logo-dark.svg';
-import Logo from '../../images/logo/logo.svg';
+import { FormEvent } from "react";
+import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
+import LogoDark from "../../images/logo/logo-dark.svg";
+import Logo from "../../images/logo/logo.svg";
 
 const SignUp = () => {
+  const handleSubmit = (
+    event: FormEvent<HTMLFormElement | HTMLButtonElement>
+  ): void => {
+    event.preventDefault();
+    toast.error("Sign Ups are currently unavailable.", {
+      duration: 4000,
+      position: "top-center",
+    });
+  };
   return (
     <>
       <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
         <div className="flex flex-wrap items-center">
           <div className="hidden w-full xl:block xl:w-1/2">
             <div className="py-17.5 px-26 text-center">
-              <Link className="mb-5.5 inline-block" to="/">
+              <Link className="mb-5.5 inline-block" to="/dashboard">
                 <img className="hidden dark:block" src={Logo} alt="Logo" />
                 <img className="dark:hidden" src={LogoDark} alt="Logo" />
               </Link>
               <p className="2xl:px-20">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                suspendisse.
+                Empower data-driven decisions with our intuitive web analytics
+                dashboard, providing real-time insights into your website's
+                performance and user behavior.
               </p>
 
               <span className="mt-15 inline-block">
@@ -147,10 +159,10 @@ const SignUp = () => {
             <div className="w-full p-4 sm:p-12.5 xl:p-17.5">
               <span className="mb-1.5 block font-medium">Start for free</span>
               <h2 className="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2">
-                Sign Up to TailAdmin
+                Sign Up to Lighthouse
               </h2>
 
-              <form>
+              <form onSubmit={handleSubmit}>
                 <div className="mb-4">
                   <label className="mb-2.5 block font-medium text-black dark:text-white">
                     Name
@@ -334,8 +346,8 @@ const SignUp = () => {
 
                 <div className="mt-6 text-center">
                   <p>
-                    Already have an account?{' '}
-                    <Link to="/auth/signin" className="text-primary">
+                    Already have an account?{" "}
+                    <Link to="/signin" className="text-primary">
                       Sign in
                     </Link>
                   </p>

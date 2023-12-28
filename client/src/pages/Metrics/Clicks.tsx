@@ -13,9 +13,6 @@ const Clicks = () => {
         <div className="col-span-12">
           <TableOne />
         </div>
-        {/* <ChartOne />
-        <ChartTwo />
-        <ChartThree /> */}
       </div>
     </>
   );

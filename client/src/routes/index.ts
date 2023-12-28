@@ -6,46 +6,40 @@ const Dashboard = lazy(() => import("../pages/Dashboard"));
 const Views = lazy(() => import("../pages/Metrics/Views"));
 const Clicks = lazy(() => import("../pages/Metrics/Clicks"));
 const Geo = lazy(() => import("../pages/Metrics/Geo"));
-const Profile = lazy(() => import("../pages/Profile"));
 const Settings = lazy(() => import("../pages/Settings"));
 // const Alerts = lazy(() => import("../pages/UiElements/Alerts"));
 // const Buttons = lazy(() => import("../pages/UiElements/Buttons"));
 
 const coreRoutes = [
-  // {
-  //   path: "/calendar",
-  //   title: "Calender",
-  //   component: Calendar,
-  // },
   {
     path: "/dashboard",
     title: "Dashboard",
     component: Dashboard,
-  },
-  {
-    path: "/profile",
-    title: "Profile",
-    component: Profile,
+    isPrivate: true,
   },
   {
     path: "/metrics/views",
     title: "Views",
     component: Views,
+    isPrivate: true,
   },
   {
     path: "/metrics/clicks",
     title: "Clicks",
     component: Clicks,
+    isPrivate: true,
   },
   {
     path: "/metrics/geo",
     title: "Geo",
     component: Geo,
+    isPrivate: true,
   },
   {
     path: "/settings",
     title: "Settings",
     component: Settings,
+    isPrivate: true,
   },
   // {
   //   path: "/chart",
