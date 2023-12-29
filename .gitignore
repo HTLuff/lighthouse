@@ -6,6 +6,7 @@ client/node_modules
 client/.svelte-kit
 client/static
 client/build
+client/src/data.json
 # Server
 server/node_modules
 server/secrets.yml
