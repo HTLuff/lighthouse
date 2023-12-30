@@ -3,6 +3,7 @@ import LogoDark from "../images/logo/logo-dark.svg";
 import Logo from "../images/logo/logo.svg";
 
 const Lander = () => {
+  console.log("lander loaded");
   return (
     <>
       <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">

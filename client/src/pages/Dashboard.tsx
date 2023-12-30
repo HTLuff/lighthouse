@@ -9,11 +9,13 @@ import Heading from "../components/Heading.tsx";
 // import ChatCard from '../../components/ChatCard.tsx';
 // import MapOne from "../components/MapOne.tsx";
 import TableOne from "../components/TableOne.tsx";
+import { useDataContext } from "../hooks/DataProvider.tsx";
 
 const Dashboard = () => {
+  const { data } = useDataContext();
   return (
     <>
-      <Heading pageName="lufflix.dev" />
+      <Heading pageName={data?.siteName || ""} />
 
       {/* <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-2 2xl:gap-7.5">
         <CardOne />

@@ -1,6 +1,9 @@
+// EXTERNAL
 import { ApexOptions } from "apexcharts";
 import React, { useState } from "react";
 import ReactApexChart from "react-apexcharts";
+// ASSETS
+import { useDataContext } from "../hooks/DataProvider";
 
 const options: ApexOptions = {
   legend: {
@@ -84,10 +87,6 @@ const options: ApexOptions = {
   xaxis: {
     type: "category",
     categories: [
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
       "Jan",
       "Feb",
       "Mar",
@@ -96,6 +95,10 @@ const options: ApexOptions = {
       "Jun",
       "Jul",
       "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
     ],
     axisBorder: {
       show: false,
@@ -123,6 +126,45 @@ interface ChartOneState {
 }
 
 const ChartOne: React.FC = () => {
+  // const { data } = useDataContext();
+  // let filter: "week" | "month" | "year" = "month";
+  /**
+   * {
+   *  name: "Clicks",
+   *  data: [6, 0, 0, 0, 0, 0, 0, 0, 0]
+   * }
+   */
+  // function mergeArrayObjects(arr: any) {
+  //   const result = {};
+
+  //   arr.forEach((obj) => {
+  //     for (const key in obj) {
+  //       if (result[key] === undefined) {
+  //         result[key] = obj[key];
+  //       } else {
+  //         result[key] += obj[key];
+  //       }
+  //     }
+  //   });
+
+  //   return [result];
+  // }
+  // const clicksByMonthArr = data?.user_sessions.map((session) => {
+  //   let day = Number(session.start_time.split("-")[2]);
+  //   let month = Number(session.start_time.split("-")[1]);
+  //   let clickNumber = session.button_clicks.length;
+  //   return {
+  //     day,
+  //     month,
+  //     clicks: clickNumber,
+  //   };
+  // });
+  // const viewsByMonthArr = data?.user_sessions.map((session) => {
+  //   let monthIndex = Number(session.start_time.split("-")[1]) - 1;
+  //   return {
+  //     [monthIndex]: clickNumber,
+  //   };
+  // });
   const [state, setState] = useState<ChartOneState>({
     series: [
       {
