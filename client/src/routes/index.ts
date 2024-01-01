@@ -12,31 +12,31 @@ const Settings = lazy(() => import("../pages/Settings"));
 
 const coreRoutes = [
   {
-    path: "/dashboard",
+    path: "/dashboard/",
     title: "Dashboard",
     component: Dashboard,
     isPrivate: true,
   },
   {
-    path: "/metrics/views",
+    path: "/metrics/views/",
     title: "Views",
     component: Views,
     isPrivate: true,
   },
   {
-    path: "/metrics/clicks",
+    path: "/metrics/clicks/",
     title: "Clicks",
     component: Clicks,
     isPrivate: true,
   },
   {
-    path: "/metrics/geo",
+    path: "/metrics/geo/",
     title: "Geo",
     component: Geo,
     isPrivate: true,
   },
   {
-    path: "/settings",
+    path: "/settings/",
     title: "Settings",
     component: Settings,
     isPrivate: true,

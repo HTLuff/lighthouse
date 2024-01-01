@@ -3,6 +3,7 @@ import React, {
   createContext,
   useState,
   ReactNode,
+  startTransition,
   // Dispatch,
   // SetStateAction,
 } from "react";
@@ -67,7 +68,8 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         });
         setToken("1");
         localStorage.setItem("lighthouse-token", "1");
-        navigate("/dashboard");
+        startTransition(() => navigate("/dashboard"));
+
         return;
       }
       if (email !== "demo@lighthouse.com" || password !== "Password123!") {

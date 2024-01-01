@@ -34,9 +34,9 @@ function App() {
       <AuthProvider>
         <DataProvider>
           <Routes>
-            <Route path="/signin" element={<SignIn />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route index element={<Lander />} />
+            <Route path="/signin/" element={<SignIn />} />
+            <Route path="/signup/" element={<SignUp />} />
+            <Route path="/" element={<Lander />} />
             <Route element={<DefaultLayout />}>
               {routes.map((routes, index) => {
                 const { path, component: Component } = routes;
