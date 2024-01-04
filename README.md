@@ -35,15 +35,14 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Websites with long-running processes often don’t provide feedback to users, leading to a poor customer experience. You might have experienced this when booking tickets, searching for hotels, or buying goods online. These sites often call multiple backend and third-party endpoints and aggregate the results to complete your request, causing the delay. In these long running scenarios, a transparent progress tracking solution can create a better user experience.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
 
-* [![AWS SAM][aws.amazon.com]][AWS-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![TypeScript][typescriptlang.org]][TypeScript-url]
+* React
+* GoLang
+* Serverless Framework
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -97,6 +96,8 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Add Changelog
+- [ ] Serverless Framework for events S3 bucket, Kinesis, and DynamoDb
+- [ ] Users DynamoDb table
+- [ ] Auth forgot-password workflow
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

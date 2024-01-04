@@ -9,6 +9,7 @@ client/build
 client/src/data.json
 client/dist
 # Server
+server/.env
 server/node_modules
 server/secrets.yml
 server/layers/ffmpeg/layer/**
