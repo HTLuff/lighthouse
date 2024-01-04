@@ -1,11 +1,15 @@
 // EXTERNAL
 import { ApexOptions } from "apexcharts";
-import React, { useState } from "react";
 import ReactApexChart from "react-apexcharts";
-// ASSETS
-import { useDataContext } from "../hooks/DataProvider";
+// TYPES
+interface ChartOneState {
+  series: {
+    name: string;
+    data: number[];
+  }[];
+}
 
-const options: ApexOptions = {
+const generateOptions: any = (dateRange: any) => ({
   legend: {
     show: false,
     position: "top",
@@ -73,7 +77,7 @@ const options: ApexOptions = {
   markers: {
     size: 4,
     colors: "#fff",
-    strokeColors: ["#3056D3", "#80CAEE"],
+    strokeColors: ["#3056D3", "#80CAEE", "#10B981", "#375E83", "#259AE6"],
     strokeWidth: 3,
     strokeOpacity: 0.9,
     strokeDashArray: 0,
@@ -86,20 +90,7 @@ const options: ApexOptions = {
   },
   xaxis: {
     type: "category",
-    categories: [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
-    ],
+    categories: dateRange.map((x: any) => x),
     axisBorder: {
       show: false,
     },
@@ -110,86 +101,28 @@ const options: ApexOptions = {
   yaxis: {
     title: {
       style: {
-        fontSize: "0px",
+        fontSize: "10px",
       },
     },
     min: 0,
     max: 100,
   },
-};
+});
 
-interface ChartOneState {
-  series: {
-    name: string;
-    data: number[];
-  }[];
-}
-
-const ChartOne: React.FC = () => {
-  // const { data } = useDataContext();
-  // let filter: "week" | "month" | "year" = "month";
-  /**
-   * {
-   *  name: "Clicks",
-   *  data: [6, 0, 0, 0, 0, 0, 0, 0, 0]
-   * }
-   */
-  // function mergeArrayObjects(arr: any) {
-  //   const result = {};
-
-  //   arr.forEach((obj) => {
-  //     for (const key in obj) {
-  //       if (result[key] === undefined) {
-  //         result[key] = obj[key];
-  //       } else {
-  //         result[key] += obj[key];
-  //       }
-  //     }
-  //   });
-
-  //   return [result];
-  // }
-  // const clicksByMonthArr = data?.user_sessions.map((session) => {
-  //   let day = Number(session.start_time.split("-")[2]);
-  //   let month = Number(session.start_time.split("-")[1]);
-  //   let clickNumber = session.button_clicks.length;
-  //   return {
-  //     day,
-  //     month,
-  //     clicks: clickNumber,
-  //   };
-  // });
-  // const viewsByMonthArr = data?.user_sessions.map((session) => {
-  //   let monthIndex = Number(session.start_time.split("-")[1]) - 1;
-  //   return {
-  //     [monthIndex]: clickNumber,
-  //   };
-  // });
-  const [state, setState] = useState<ChartOneState>({
-    series: [
-      {
-        name: "Views",
-        data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30, 45],
-      },
-
-      {
-        name: "Clicks",
-        data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39, 51],
-      },
-    ],
-  });
-
+const ChartOne: any = ({ data, dateRange }: any) => {
   return (
     <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-8">
-      <div className="flex flex-wrap items-start justify-between gap-3 sm:flex-nowrap">
-        <div className="flex w-full flex-wrap gap-3 sm:gap-5">
+      <h5 className="text-xl font-semibold text-black dark:text-white">
+        Last 7 Days
+      </h5>
+      <div className="flex flex-wrap items-start justify-between gap-1 sm:flex-nowrap">
+        <div className="flex w-full flex-wrap gap-1 sm:gap-1">
           <div className="flex min-w-47.5">
             <span className="mt-1 mr-2 flex h-4 w-full max-w-4 items-center justify-center rounded-full border border-primary">
               <span className="block h-2.5 w-full max-w-2.5 rounded-full bg-primary"></span>
             </span>
             <div className="w-full">
-              <p className="font-semibold text-primary">Total Views</p>
-              <p className="text-sm font-medium">12.04.2022 - 12.05.2022</p>
+              <p className="font-semibold text-primary">{data[0].name}</p>
             </div>
           </div>
           <div className="flex min-w-47.5">
@@ -197,31 +130,45 @@ const ChartOne: React.FC = () => {
               <span className="block h-2.5 w-full max-w-2.5 rounded-full bg-secondary"></span>
             </span>
             <div className="w-full">
-              <p className="font-semibold text-secondary">Total Clicks</p>
-              <p className="text-sm font-medium">12.04.2022 - 12.05.2022</p>
+              <p className="font-semibold text-secondary">{data[1].name}</p>
             </div>
           </div>
         </div>
-        <div className="flex w-full max-w-45 justify-end">
+        {/* <div className="flex w-full max-w-45 justify-end">
           <div className="inline-flex items-center rounded-md bg-whiter p-1.5 dark:bg-meta-4">
-            <button className="rounded bg-white py-1 px-3 text-xs font-medium text-black shadow-card hover:bg-white hover:shadow-card dark:bg-boxdark dark:text-white dark:hover:bg-boxdark">
-              Day
-            </button>
-            <button className="rounded py-1 px-3 text-xs font-medium text-black hover:bg-white hover:shadow-card dark:text-white dark:hover:bg-boxdark">
+            <button
+              onClick={() => setFilter("week")}
+              className={`${
+                filter === "week" && "bg-white shadow-card"
+              } rounded py-1 px-3 text-xs font-medium text-black hover:bg-white hover:shadow-card dark:bg-boxdark dark:text-white dark:hover:bg-boxdark`}
+            >
               Week
             </button>
-            <button className="rounded py-1 px-3 text-xs font-medium text-black hover:bg-white hover:shadow-card dark:text-white dark:hover:bg-boxdark">
+            <button
+              onClick={() => setFilter("month")}
+              className={`${
+                filter === "month" && "bg-white shadow-card"
+              } rounded py-1 px-3 text-xs font-medium text-black hover:bg-white hover:shadow-card dark:text-white dark:hover:bg-boxdark`}
+            >
               Month
             </button>
+            <button
+              onClick={() => setFilter("year")}
+              className={`${
+                filter === "year" && "bg-white shadow-card"
+              } rounded py-1 px-3 text-xs font-medium text-black hover:bg-white hover:shadow-card dark:text-white dark:hover:bg-boxdark`}
+            >
+              Year
+            </button>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <div>
         <div id="chartOne" className="-ml-5">
           <ReactApexChart
-            options={options}
-            series={state.series}
+            options={generateOptions(dateRange)}
+            series={data}
             type="area"
             height={350}
           />
