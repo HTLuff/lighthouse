@@ -1,8 +1,5 @@
 import Breadcrumb from "../../components/Breadcrumb.tsx";
 import MapOne from "../../components/MapOne.tsx";
-// import ChartOne from "../../components/ChartOne.tsx";
-// import ChartThree from "../../components/ChartThree.tsx";
-// import ChartTwo from "../../components/ChartTwo.tsx";
 
 const Geo = () => {
   return (
@@ -11,11 +8,18 @@ const Geo = () => {
 
       <div className="grid grid-cols-12 gap-4 md:gap-6 2xl:gap-7.5">
         <div className="col-span-12">
-          <MapOne />
+          <MapOne
+            data={[
+              ["Country", "Popularity"],
+              ["Germany", 200],
+              ["United States", 300],
+              ["Brazil", 400],
+              ["Canada", 500],
+              ["France", 600],
+              ["RU", 700],
+            ]}
+          />
         </div>
-        {/* <ChartOne />
-        <ChartTwo />
-        <ChartThree /> */}
       </div>
     </>
   );

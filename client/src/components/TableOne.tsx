@@ -29,8 +29,11 @@ const TableOne = ({ data }: any) => {
             </h5>
           </div>
         </div>
-        {data.map((x: any) => (
-          <div className="grid grid-cols-3 border-b border-stroke dark:border-strokedark sm:grid-cols-3">
+        {data.map((x: any, i: number) => (
+          <div
+            key={i}
+            className="grid grid-cols-3 border-b border-stroke dark:border-strokedark sm:grid-cols-3"
+          >
             <div className="flex items-center gap-3 p-2.5 xl:p-5">
               <div className="flex-shrink-0">
                 <img
