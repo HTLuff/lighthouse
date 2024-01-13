@@ -1,1 +1,8 @@
-{}
+{
+  "devDependencies": {
+    "serverless-dotenv-plugin": "^6.0.0"
+  },
+  "dependencies": {
+    "serverless-iam-roles-per-function": "^3.2.0"
+  }
+}

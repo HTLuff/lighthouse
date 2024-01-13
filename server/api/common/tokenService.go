@@ -4,7 +4,7 @@ import (
 	"os"
 	"time"
 
-	"lighthouse/common/model"
+	"lighthouse/api/common/model"
 
 	"github.com/dgrijalva/jwt-go"
 	"github.com/jinzhu/gorm"

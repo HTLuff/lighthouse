@@ -1,11 +1,15 @@
-package main
+package authorizer
 
-// https://github.com/yunuskilicdev/serverlessExample/blob/master/common/tokenService.go
-// https://medium.com/analytics-vidhya/developing-complete-authorization-modules-with-aws-lambda-go-postgresql-event-driven-sqs-ee641622e890
+/**
+HTL (12-01-24)
+Custom Authorizer, customised from these guides
+https://github.com/yunuskilicdev/serverlessExample/blob/master/common/tokenService.go
+https://medium.com/analytics-vidhya/developing-complete-authorization-modules-with-aws-lambda-go-postgresql-event-driven-sqs-ee641622e890
+*/
 import (
 	"context"
 	"errors"
-	"lighthouse/common"
+	"lighthouse/api/common"
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"

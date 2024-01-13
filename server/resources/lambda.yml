@@ -1,5 +1,5 @@
-events:
-  handler: "functions/events/main"
+getEvents:
+  handler: "bin/functions/events/events"
   iamRoleStatements:
     - Effect: "Allow"
       Action:
@@ -19,8 +19,8 @@ events:
           arn:
             Fn::ImportValue: "custom-authorizer-arn" # Replace with the actual ARN
         resultTtlInSeconds: 0 # Cache disabled for simplicity
-users:
-  handler: "functions/users/main"
+getUser:
+  handler: "bin/functions/user/user"
   iamRoleStatements:
     - Effect: "Allow"
       Action:

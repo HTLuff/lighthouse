@@ -14,3 +14,4 @@ server/node_modules
 server/secrets.yml
 server/layers/ffmpeg/layer/**
 server/layers/ffmpeg/.serverless
+node_modules
