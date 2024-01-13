@@ -1,0 +1,58 @@
+Resources:
+  # (HTL - 08/01/24) Influenced by this blog post: https://medium.com/swlh/create-kinesis-firehose-data-stream-from-iot-core-to-s3-using-serverless-framework-2af1d0b35500#:~:text=in%20other%20resource.-,KinesisFirehose,-This%20part%20is
+  KinesisDeliveryRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: ${self:service}-${self:provider.stage}-kinesis-delivery-role
+      AssumeRolePolicyDocument:
+        Statement:
+          - Sid: ""
+            Effect: Allow
+            Principal:
+              Service: firehose.amazonaws.com
+            Action: "sts:AssumeRole"
+            Condition:
+              StringEquals:
+                "sts:ExternalId": !Ref "AWS::AccountId"
+
+  KinesisDeliveryToS3Policy:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyName: ${self:service}-${self:provider.stage}-kinesis-delivery-to-s3-policy
+      PolicyDocument:
+        Statement:
+          - Effect: Allow
+            Action:
+              - "s3:AbortMultipartUpload"
+              - "s3:GetBucketLocation"
+              - "s3:GetObject"
+              - "s3:ListBucket"
+              - "s3:ListBucketMultipartUploads"
+              - "s3:PutObject"
+            Resource:
+              - !Sub "arn:aws:s3:::${self:provider.environment.ANALYTICS_BUCKET_NAME}"
+              - !Sub "arn:aws:s3:::${self:provider.environment.ANALYTICS_BUCKET_NAME}*"
+      Roles:
+        - !Ref KinesisDeliveryRole
+
+  KinesisDeliveryStream:
+    Type: AWS::KinesisFirehose::DeliveryStream
+    Properties:
+      DeliveryStreamType: DirectPut
+      DeliveryStreamName: ${self:provider.environment.KINESIS_STREAM_NAME}
+      ExtendedS3DestinationConfiguration:
+        BucketARN: !Sub "arn:aws:s3:::${self:provider.environment.ANALYTICS_BUCKET_NAME}"
+        BufferingHints:
+          IntervalInSeconds: 600
+          SizeInMBs: 5
+        CompressionFormat: UNCOMPRESSED
+        Prefix: "events/!{timestamp:yyyy/MM/dd}/"
+        ErrorOutputPrefix: "errors/!{firehose:error-output-type}/!{timestamp:yyyy/MM/dd}/"
+        RoleARN: !GetAtt KinesisDeliveryRole.Arn
+        ProcessingConfiguration:
+          Enabled: false
+
+Outputs:
+  deliveryStreamARN:
+    Value:
+      Ref: KinesisDeliveryStream

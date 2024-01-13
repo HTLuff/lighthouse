@@ -1,0 +1,42 @@
+events:
+  handler: "functions/events/main"
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "dynamodb:Scan"
+        - "dynamodb:Query"
+        - "dynamodb:GetItem"
+      Resource:
+        - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.EVENTS_TABLE}"
+        - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.EVENTS_TABLE}/*"
+  events:
+    - httpApi:
+        path: /events
+        method: get
+        cors: true
+        authorizer:
+          name: CustomAuthorizer
+          arn:
+            Fn::ImportValue: "custom-authorizer-arn" # Replace with the actual ARN
+        resultTtlInSeconds: 0 # Cache disabled for simplicity
+users:
+  handler: "functions/users/main"
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "dynamodb:Scan"
+        - "dynamodb:Query"
+        - "dynamodb:GetItem"
+      Resource:
+        - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.USERS_TABLE}"
+        - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.USERS_TABLE}/*"
+  events:
+    - httpApi:
+        path: /user
+        method: get
+        cors: true
+        authorizer:
+          name: CustomAuthorizer
+          arn:
+            Fn::ImportValue: "custom-authorizer-arn" # Replace with the actual ARN
+        resultTtlInSeconds: 0 # Cache disabled for simplicity
