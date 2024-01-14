@@ -9,28 +9,27 @@ plugins:
 provider:
   name: aws
   runtime: go1.x
-  region: eu-west-2
+  region: ${env:AWS_REGION}
+  # HTL (12-01-24) Only keep Cloudwatch Logs for 7 days
   logRetentionInDays: 7
   timeout: 10
   versionFunctions: false
+  environment:
+    EVENTS_TABLE: ${env:EVENTS_TABLE_NAME}
+    USERS_TABLE: ${env:USERS_TABLE_NAME}
+    ANALYTICS_BUCKET_NAME: ${env:ANALYTICS_BUCKET_NAME}
+    KINESIS_STREAM_NAME: ${env:KINESIS_STREAM_NAME}
 
 package:
   individually: true
   patterns:
-    - "!./**"
+    - !./**
     - ./bin/**
 
 functions:
-  - ${file(src/resources/lambda.yml)}
+  - ${file(resources/lambda.yml)}
 
 resources:
-  # (HTL - 12/01/24)
-  # Users
-  # Events
-  - ${file(src/resources/dynamo.yml)}
-  # (HTL - 12/01/24)
-  # Events raw data bucket
-  - ${file(src/resources/s3.yml)}
-  # (HTL - 12/01/24)
-  # Kinesis Firehose
-  - ${file(src/resources/kinesis.yml)}
+  - ${file(resources/dynamo.yml)}
+  - ${file(resources/s3.yml)}
+  - ${file(resources/kinesis.yml)}

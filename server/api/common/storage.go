@@ -10,7 +10,7 @@ import (
 )
 
 type StorageIFace interface {
-	GetUser() (model.User, error)
+	GetUser(userID string) (model.User, error)
 	GetAllEvents() ([]model.Event, error)
 }
 

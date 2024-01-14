@@ -1,26 +1,30 @@
-getEvents:
-  handler: "bin/functions/events/events"
-  iamRoleStatements:
-    - Effect: "Allow"
-      Action:
-        - "dynamodb:Scan"
-        - "dynamodb:Query"
-        - "dynamodb:GetItem"
-      Resource:
-        - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.EVENTS_TABLE}"
-        - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.EVENTS_TABLE}/*"
-  events:
-    - httpApi:
-        path: /events
-        method: get
-        cors: true
-        authorizer:
-          name: CustomAuthorizer
-          arn:
-            Fn::ImportValue: "custom-authorizer-arn" # Replace with the actual ARN
-        resultTtlInSeconds: 0 # Cache disabled for simplicity
+customAuthorizer:
+  handler: bin/authoriser
+  # Change!
+
+# getEvents:
+#   handler: "bin/events"
+#   iamRoleStatements:
+#     - Effect: "Allow"
+#       Action:
+#         - "dynamodb:Scan"
+#         - "dynamodb:Query"
+#         - "dynamodb:GetItem"
+#       Resource:
+#         - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.EVENTS_TABLE}"
+#         - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.EVENTS_TABLE}/*"
+#   events:
+#     - httpApi:
+#         path: /events
+#         method: get
+#         cors: true
+#         authorizer:
+#           name: CustomAuthorizer
+#           arn:
+#             Fn::ImportValue: "custom-authorizer-arn" # Change Replace with the actual ARN
+#         resultTtlInSeconds: 0 # Cache disabled for simplicity
 getUser:
-  handler: "bin/functions/user/user"
+  handler: "bin/user"
   iamRoleStatements:
     - Effect: "Allow"
       Action:
@@ -38,5 +42,5 @@ getUser:
         authorizer:
           name: CustomAuthorizer
           arn:
-            Fn::ImportValue: "custom-authorizer-arn" # Replace with the actual ARN
+            Fn::ImportValue: "custom-authorizer-arn" # Replace with the actual ARN change!
         resultTtlInSeconds: 0 # Cache disabled for simplicity

@@ -16,12 +16,23 @@ import (
 // https://serverless.com/framework/docs/providers/aws/events/apigateway/#lambda-proxy-integration
 
 // Handler is our lambda handler invoked by the `lambda.Start` function call
-func Handler() (events.APIGatewayProxyResponse, error) {
+func Handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
+
+	userId := request.QueryStringParameters["userId"]
+	password := request.QueryStringParameters["password"]
+
+	// Validate userId and password
+	if userId == "" || password == "" {
+		return events.APIGatewayProxyResponse{
+			StatusCode: 400,
+			Body:       "Unauthorized",
+		}, nil
+	}
 	db, err := common.ConnectToDB()
 	if err != nil {
 		return common.InternalServerError(), err
 	}
-	user, err := db.GetUser()
+	user, err := db.GetUser(userId)
 	if err != nil {
 		return common.InternalServerError(), err
 	}
