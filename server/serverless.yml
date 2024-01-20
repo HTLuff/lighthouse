@@ -1,30 +1,50 @@
-service: ${env:SERVICE_NAME}
+service: lighthouse
 
 frameworkVersion: "3"
 
 plugins:
-  - serverless-dotenv-plugin
   - serverless-iam-roles-per-function
+
+custom:
+  secrets: ${file(secrets.yml)}
+  ANALYTICS_BUCKET_NAME: ${self:custom.secrets.ANALYTICS_BUCKET_NAME}
+  AWS_ACCOUNT_ID: ${self:custom.secrets.AWS_ACCOUNT_ID}
+  AWS_REGION: ${self:custom.secrets.AWS_REGION}
+  EVENTS_TABLE_NAME: ${self:custom.secrets.EVENTS_TABLE_NAME}
+  KINESIS_STREAM_NAME: ${self:custom.secrets.KINESIS_STREAM_NAME}
+  SERVICE_NAME: ${self:custom.secrets.SERVICE_NAME}
+  USERS_TABLE_NAME: ${self:custom.secrets.USERS_TABLE_NAME}
 
 provider:
   name: aws
+  stage: dev
   runtime: go1.x
-  region: ${env:AWS_REGION}
+  region: ${self:custom.AWS_REGION}
   # HTL (12-01-24) Only keep Cloudwatch Logs for 7 days
   logRetentionInDays: 7
   timeout: 10
   versionFunctions: false
   environment:
-    EVENTS_TABLE: ${env:EVENTS_TABLE_NAME}
-    USERS_TABLE: ${env:USERS_TABLE_NAME}
-    ANALYTICS_BUCKET_NAME: ${env:ANALYTICS_BUCKET_NAME}
-    KINESIS_STREAM_NAME: ${env:KINESIS_STREAM_NAME}
+    ANALYTICS_BUCKET_NAME: ${self:custom.ANALYTICS_BUCKET_NAME}
+    AWS_ACCOUNT_ID: ${self:custom.AWS_ACCOUNT_ID}
+    EVENTS_TABLE: ${self:custom.EVENTS_TABLE_NAME}
+    KINESIS_STREAM_NAME: ${self:custom.KINESIS_STREAM_NAME}
+    SERVICE_NAME: ${self:custom.SERVICE_NAME}
+    USERS_TABLE: ${self:custom.USERS_TABLE_NAME}
+  httpApi:
+    authorizers:
+      customAuthorizer:
+        type: request
+        functionName: authorizerFunc
 
 package:
   individually: true
-  patterns:
-    - !./**
-    - ./bin/**
+  exclude:
+    - node_modules/**
+    - .git/**
+    - README.md
+  include:
+    - .bin/**
 
 functions:
   - ${file(resources/lambda.yml)}

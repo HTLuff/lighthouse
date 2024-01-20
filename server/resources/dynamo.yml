@@ -9,7 +9,7 @@ Resources:
         - AttributeName: "id"
           KeyType: "HASH"
       BillingMode: PAY_PER_REQUEST
-      TableName: ${self:provider.environment.EVENTS_TABLE}
+      TableName: "${self:provider.environment.EVENTS_TABLE}"
       StreamSpecification:
         StreamViewType: NEW_IMAGE
   UserTable:
@@ -22,7 +22,7 @@ Resources:
         - AttributeName: "id"
           KeyType: "HASH"
       BillingMode: PAY_PER_REQUEST
-      TableName: ${self:provider.environment.USER_TABLE}
+      TableName: "${self:provider.environment.USERS_TABLE}"
 Outputs:
   EventsTableName:
     Value:

@@ -2,7 +2,7 @@ Resources:
   AnalyticsBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: ${self:provider.environment.ANALYTICS_BUCKET_NAME}
+      BucketName: "${self:provider.environment.ANALYTICS_BUCKET_NAME}"
       AccessControl: "BucketOwnerFullControl"
 
 Outputs:

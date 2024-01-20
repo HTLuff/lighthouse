@@ -3,7 +3,7 @@ Resources:
   KinesisDeliveryRole:
     Type: AWS::IAM::Role
     Properties:
-      RoleName: ${self:service}-${self:provider.stage}-kinesis-delivery-role
+      RoleName: "${self:provider.environment.SERVICE_NAME}-${self:provider.stage}-kinesis-delivery-role"
       AssumeRolePolicyDocument:
         Statement:
           - Sid: ""
@@ -18,7 +18,7 @@ Resources:
   KinesisDeliveryToS3Policy:
     Type: AWS::IAM::Policy
     Properties:
-      PolicyName: ${self:service}-${self:provider.stage}-kinesis-delivery-to-s3-policy
+      PolicyName: "${self:provider.environment.SERVICE_NAME}-${self:provider.stage}-kinesis-delivery-to-s3-policy"
       PolicyDocument:
         Statement:
           - Effect: Allow
@@ -39,7 +39,7 @@ Resources:
     Type: AWS::KinesisFirehose::DeliveryStream
     Properties:
       DeliveryStreamType: DirectPut
-      DeliveryStreamName: ${self:provider.environment.KINESIS_STREAM_NAME}
+      DeliveryStreamName: "${self:provider.environment.KINESIS_STREAM_NAME}"
       ExtendedS3DestinationConfiguration:
         BucketARN: !Sub "arn:aws:s3:::${self:provider.environment.ANALYTICS_BUCKET_NAME}"
         BufferingHints:

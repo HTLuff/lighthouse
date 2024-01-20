@@ -1,7 +1,19 @@
-customAuthorizer:
-  handler: bin/authoriser
-  # Change!
-
+authorizerFunc:
+  handler: "bin/authoriser"
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "dynamodb:GetItem"
+      Resource:
+        - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.USERS_TABLE}"
+    - Effect: "Allow"
+      Action:
+        - "iam:CreatePolicy"
+        - "iam:AttachRolePolicy"
+        - "iam:PutRolePolicy"
+      Resource:
+        - "arn:aws:lambda:eu-west-2:${self:provider.environment.AWS_ACCOUNT_ID}:function:getUser"
+        # - "arn:aws:lambda:eu-west-2:${self:provider.}:function:getEvents"
 # getEvents:
 #   handler: "bin/events"
 #   iamRoleStatements:
@@ -36,11 +48,8 @@ getUser:
         - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.USERS_TABLE}/*"
   events:
     - httpApi:
-        path: /user
-        method: get
+        path: "/user"
+        method: "get"
         cors: true
         authorizer:
-          name: CustomAuthorizer
-          arn:
-            Fn::ImportValue: "custom-authorizer-arn" # Replace with the actual ARN change!
-        resultTtlInSeconds: 0 # Cache disabled for simplicity
+          name: "customAuthorizer"
