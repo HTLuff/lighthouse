@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-    <img src="https://github.com/HTLuff/cammy/blob/main/hero.png" alt="Logo" width="200" height="200">
+    <img src="https://github.com/HTLuff/lighthouse/blob/main/hero.png" alt="Logo" width="200" height="200">
 
   <h3 align="center">Lighthouse</h3>
 
