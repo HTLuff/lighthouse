@@ -96,8 +96,6 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Serverless Framework for events S3 bucket, Kinesis, and DynamoDb
-- [ ] Users DynamoDb table
-- [ ] Auth forgot-password workflow
+- [ ] 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
