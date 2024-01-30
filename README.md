@@ -1,6 +1,6 @@
 # Lighthouse
 
-![Logo](hero.png){ width=200 height=100 }
+<img src="hero.png" alt="Logo" width="200" height="200">
 
 [![React](https://img.shields.io/badge/react-16.14.0-blue.svg)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/typescript-4.2.4-blue.svg)](https://www.typescriptlang.org/)
