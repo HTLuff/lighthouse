@@ -16,11 +16,11 @@
 
 ## About
 
-Real-time Web Analytics
+Real-time Web Analytics for website events. This project is setup to stream events through a kinesis stream into a DynamoDB table.
 
 ## Example
 
-_Example to go here
+<img src="example.png" alt="Logo" width="600" height="293">
 
 ## Usage
 
