@@ -28,5 +28,5 @@ _Example to go here
 
 ## Roadmap
 
-[] Add example screenshots to README
-[] Add Usage to README
+- [ ] Add example screenshots to README
+- [ ] Add Usage to README
