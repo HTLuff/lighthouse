@@ -20,7 +20,7 @@ Real-time Web Analytics for website events. This project is setup to stream even
 
 ## Example
 
-<img src="example.png" alt="Logo" width="600" height="293">
+<img src="example.jpg" alt="Logo" width="600" height="293">
 
 ## Usage
 
