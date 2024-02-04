@@ -5,6 +5,8 @@ import Heading from "../components/Heading.tsx";
 import TableOne from "../components/TableOne.tsx";
 // HOOKS
 import { useDataContext } from "../hooks/DataProvider.tsx";
+// ASSETS
+import * as eventData from "../data.json";
 
 const Dashboard = () => {
   const { data } = useDataContext();
@@ -42,16 +44,6 @@ const Dashboard = () => {
             },
             { name: "Clicks", data: [6, 5, 15, 2, 0, 40, 12] },
           ]}
-          //       {
-          //         name: "Views",
-          //         data: [0, 0, 3, 1, 0, 8, 3],
-          //       },
-          //       {
-          //         name: "Clicks",
-          //         data: [30, 25, 36, 30, 45, 35, 64],
-          //       },
-          //     ]},
-          //   }
         />
       </div>
 
@@ -82,34 +74,24 @@ const Dashboard = () => {
         <TableOne
           data={[
             {
-              name: "Lighthouse",
-              sourceCodeClicks: 5,
-              demoClicks: 1,
-              logo: "lighthouse-analytics.png",
+              name: "lighthouse_demo",
+              clicks: 7,
             },
             {
-              name: "Cammy",
-              sourceCodeClicks: 5,
-              demoClicks: 1,
-              logo: "cammy.png",
+              name: "lighthouse_source",
+              clicks: 7,
             },
             {
-              name: "SUM",
-              sourceCodeClicks: 5,
-              demoClicks: 1,
-              logo: "sum-bank.png",
+              name: "sum_source",
+              clicks: 5,
             },
             {
-              name: "Moon Notes",
-              sourceCodeClicks: 5,
-              demoClicks: 1,
-              logo: "moon-notes.png",
+              name: "moon_demo",
+              clicks: 3,
             },
             {
-              name: "Git Branch Batch Delete",
-              sourceCodeClicks: 5,
-              demoClicks: 1,
-              logo: "batchdelete.png",
+              name: "gbbd_source",
+              clicks: 2,
             },
           ]}
         />

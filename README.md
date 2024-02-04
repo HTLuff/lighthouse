@@ -30,3 +30,6 @@ Real-time Web Analytics for website events. This project is setup to stream even
 
 - [ ] Add example screenshots to README
 - [ ] Add Usage to README
+- [ ] Add /events api endpoint
+- [ ] Add /login api endpoint
+- [ ] Add number of 'current users' metric

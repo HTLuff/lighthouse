@@ -39,34 +39,24 @@ const Clicks = () => {
           <TableOne
             data={[
               {
-                name: "Lighthouse",
-                sourceCodeClicks: 5,
-                demoClicks: 1,
-                logo: "lighthouse-analytics.png",
+                name: "lighthouse_demo",
+                clicks: 7,
               },
               {
-                name: "Cammy",
-                sourceCodeClicks: 5,
-                demoClicks: 1,
-                logo: "cammy.png",
+                name: "lighthouse_source",
+                clicks: 7,
               },
               {
-                name: "SUM",
-                sourceCodeClicks: 5,
-                demoClicks: 1,
-                logo: "sum-bank.png",
+                name: "sum_source",
+                clicks: 5,
               },
               {
-                name: "Moon Notes",
-                sourceCodeClicks: 5,
-                demoClicks: 1,
-                logo: "moon-notes.png",
+                name: "moon_demo",
+                clicks: 3,
               },
               {
-                name: "Git Branch Batch Delete",
-                sourceCodeClicks: 5,
-                demoClicks: 1,
-                logo: "batchdelete.png",
+                name: "gbbd_source",
+                clicks: 2,
               },
             ]}
           />
